@@ -2,7 +2,7 @@ import * as React from "react";
 import {Button, Divider, Grid, Rating, Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import {useRecoilState} from "recoil";
-import Link from "next/link";
+import {useRouter} from "next/router";
 import {cartItemsInfoState} from "../states/CartItemsInfo";
 import {CartItemInfo} from "../model/CartItemInfo";
 
@@ -10,6 +10,7 @@ const styles = makeStyles(() => ({
   wrapper: {
     display: "flex",
     padding: 60,
+    minHeight: 912,
   },
   itemImage: {
     width: "500",
@@ -54,13 +55,15 @@ interface Props {
   item: CartItemInfo
 }
 
-export default function itemDetail({item}: Props) {
+export default function ItemDetail({item}: Props) {
   const classes = styles()
+  const router = useRouter()
   const [inBasket, setInBasket] = useRecoilState(cartItemsInfoState)
 
 
   const buyNow = () => {
     setInBasket([item])
+    return router.push(`/purchase/${item.id}`)
   }
   const putInItem = (data: CartItemInfo) => {
     setInBasket([
@@ -130,14 +133,11 @@ export default function itemDetail({item}: Props) {
               className={classes.buyNowBtn}
               onClick={buyNow}
             >
-              <Link href={`/purchase/${item.id}`}>
-                <a>바로 구매</a>
-              </Link>
+              바로 구매
             </Button>
             <Button
               variant={"contained"}
               color={"error"}
-              // onClick={putInItem(item)}
               onClick={() => putInItem(item)}
             >
               장바구니에 담기

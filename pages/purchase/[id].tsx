@@ -1,7 +1,7 @@
 import Purchase from "../../src/components/Purchase";
 
-const Post = () => {
+const PurchaseID = () => {
   return <Purchase/>
 }
 
-export default Post
+export default PurchaseID

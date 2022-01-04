@@ -40,7 +40,7 @@ export default function ADBanner() {
   return (
     <>
       <div className={classes.innerImage}>
-        <img src="https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/6141158764154773106.jpg"/>
+        <img src={"https://image.oliveyoung.co.kr/uploads/images/display/90000010001/1/6141158764154773106.jpg"} alt={"MainBanner"}/>
         <div className={classes.bannerFont}>
           <Typography variant={"h1"}>Dalda Shop</Typography>
           <p>달다 샵: 이제 쇼핑도 달달하게!</p>
@@ -49,13 +49,13 @@ export default function ADBanner() {
       <div className={classes.ADBanner}>
         <ul>
           <li className={classes.ADImages}>
-            <img src="http://jogunshop.img18.kr/web/upload/main/bigsize3_banner01.jpg"/>
+            <img src={"http://jogunshop.img18.kr/web/upload/main/bigsize3_banner01.jpg"} alt={"Banner1"}/>
           </li>
           <li className={classes.ADImages}>
-            <img src="http://jogunshop.img18.kr/web/upload/main/delivery2_banner02.jpg"/>
+            <img src={"http://jogunshop.img18.kr/web/upload/main/delivery2_banner02.jpg"} alt={"Banner2"}/>
           </li>
           <li className={classes.ADImages}>
-            <img src="http://jogunshop.img18.kr/web/upload/main/onemilewear3_banner03.jpg"/>
+            <img src={"http://jogunshop.img18.kr/web/upload/main/onemilewear3_banner03.jpg"} alt={"Banner3"}/>
           </li>
         </ul>
       </div>

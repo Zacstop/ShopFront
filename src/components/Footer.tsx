@@ -8,7 +8,7 @@ const styles = makeStyles(() => ({
     height: 40,
     width: "100%",
     textAlign: "center",
-    position: "static",
+    position: "relative",
     bottom: 0,
     paddingTop: 10,
   },
@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <div className={classes.footer}>
       <Grid>
-        <Typography color={"white"}>
+        <Typography color={"whitesmoke"}>
           Copyright by Andy - @Dalda Shop
         </Typography>
       </Grid>

@@ -13,14 +13,14 @@ import {
   Typography
 } from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import Link from "next/link";
+import {useRouter} from "next/router";
 import {useRecoilValue} from "recoil";
 import {cartItemsInfoState} from "../src/states/CartItemsInfo";
 
 const styles = makeStyles(() => ({
   wrapper: {
     padding: 70,
-    marginBottom: 380,
+    minHeight: 912,
   },
   titleDiv: {
     marginBottom: 25,
@@ -51,6 +51,7 @@ const styles = makeStyles(() => ({
 
 export default function PurchaseComplete() {
   const classes = styles()
+  const router = useRouter()
   const itemsInfo = useRecoilValue(cartItemsInfoState)
 
   return (
@@ -68,20 +69,20 @@ export default function PurchaseComplete() {
                 <TableHead className={classes.headColor}>
                   <TableRow>
                     <TableCell>제품명</TableCell>
-                    <TableCell align="center">브랜드</TableCell>
-                    <TableCell align="center">가격</TableCell>
-                    <TableCell align="center">제품 품목</TableCell>
-                    <TableCell align="center">카테고리</TableCell>
+                    <TableCell align={"center"}>브랜드</TableCell>
+                    <TableCell align={"center"}>가격</TableCell>
+                    <TableCell align={"center"}>제품 품목</TableCell>
+                    <TableCell align={"center"}>카테고리</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {itemsInfo.map((info) => (
                     <TableRow key={info.id}>
-                      <TableCell component="th" scope="row">{info.name}</TableCell>
-                      <TableCell align="center">{info.brand}</TableCell>
-                      <TableCell align="center">{info.product_type}</TableCell>
-                      <TableCell align="center">{info.category}</TableCell>
-                      <TableCell align="center">${info.price}</TableCell>
+                      <TableCell component={"th"} scope={"row"}>{info.name}</TableCell>
+                      <TableCell align={"center"}>{info.brand}</TableCell>
+                      <TableCell align={"center"}>{info.product_type}</TableCell>
+                      <TableCell align={"center"}>{info.category}</TableCell>
+                      <TableCell align={"center"}>${info.price}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -93,10 +94,11 @@ export default function PurchaseComplete() {
               variant={"contained"}
               className={classes.btnStyle}
               color={"secondary"}
+              onClick={() => {
+                router.push('/')
+              }}
             >
-              <Link href={'/'}>
-                <a>더 둘러보기</a>
-              </Link>
+              더 둘러보기
             </Button>
           </div>
         </Grid>

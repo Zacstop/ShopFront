@@ -6,7 +6,7 @@ interface Props {
   item: CartItemInfo
 }
 
-const Post = ({item}: Props) => {
+const Item = ({item}: Props) => {
   return <ItemDetail item={item}/>
 }
 
@@ -22,4 +22,4 @@ export async function getServerSideProps(context: { params: { id: number } }) {
   }
 }
 
-export default Post
+export default Item
