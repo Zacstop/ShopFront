@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import Link from "next/link";
-import {cartItemsInfoState} from "../src/states/CartItemsInfo";
+import {cartItemGetterState} from "../src/states/CartItemsInfo";
 import {useRecoilValue} from "recoil";
 
 const styles = makeStyles(() => ({
@@ -50,7 +50,7 @@ const styles = makeStyles(() => ({
 
 export default function ShoppingCart() {
   const classes = styles()
-  const itemsInfo = useRecoilValue(cartItemsInfoState)
+  const itemsInfo = useRecoilValue(cartItemGetterState)
 
   return (
     <div className={classes.wrapper}>
@@ -72,6 +72,11 @@ export default function ShoppingCart() {
                 </TableRow>
               </TableHead>
               <TableBody>
+                {!itemsInfo.length && (
+                  <TableRow>
+                    <TableCell>장바구니에 상품이 존재하지 않습니다</TableCell>
+                  </TableRow>
+                )}
                 {itemsInfo.map((data) => (
                   <TableRow key={data.id}>
                     <TableCell component="th" scope="row">{data.name}</TableCell>

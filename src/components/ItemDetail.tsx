@@ -57,12 +57,27 @@ interface Props {
 export default function itemDetail({item}: Props) {
   const classes = styles()
   const [inBasket, setInBasket] = useRecoilState(cartItemsInfoState)
+
+
   const buyNow = () => {
     setInBasket([item])
   }
-  const putInItem = () => {
-    setInBasket([item])
-    alert('장바구니에 담았습니다')
+  const putInItem = (data: CartItemInfo) => {
+    setInBasket([
+      ...inBasket,
+      {
+        id: data.id,
+        brand: data.brand,
+        category: data.category,
+        description: data.description,
+        image_link: data.image_link,
+        name: data.name,
+        price: data.price,
+        product_type: data.product_type,
+        rating: data.rating,
+      },
+    ])
+    alert('상품이 장바구니에 담겼습니다')
   }
 
   return (
@@ -122,9 +137,10 @@ export default function itemDetail({item}: Props) {
             <Button
               variant={"contained"}
               color={"error"}
-              onClick={putInItem}
+              // onClick={putInItem(item)}
+              onClick={() => putInItem(item)}
             >
-              <a>장바구니</a>
+              장바구니에 담기
             </Button>
           </Grid>
         </Grid>
