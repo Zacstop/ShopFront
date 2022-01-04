@@ -12,14 +12,14 @@ import {
   Typography
 } from "@mui/material";
 import {makeStyles} from "@mui/styles";
-import Link from "next/link";
+import {useRouter} from "next/router";
 import {cartItemGetterState} from "../src/states/CartItemsInfo";
 import {useRecoilValue} from "recoil";
 
 const styles = makeStyles(() => ({
   wrapper: {
     padding: 70,
-    marginBottom: 380,
+    minHeight: 912,
   },
   titleDiv: {
     marginBottom: 25,
@@ -50,6 +50,7 @@ const styles = makeStyles(() => ({
 
 export default function ShoppingCart() {
   const classes = styles()
+  const router = useRouter()
   const itemsInfo = useRecoilValue(cartItemGetterState)
 
   return (
@@ -65,10 +66,10 @@ export default function ShoppingCart() {
               <TableHead className={classes.headColor}>
                 <TableRow>
                   <TableCell>제품명</TableCell>
-                  <TableCell align="center">브랜드</TableCell>
-                  <TableCell align="center">제품 품목</TableCell>
-                  <TableCell align="center">카테고리</TableCell>
-                  <TableCell align="center">가격</TableCell>
+                  <TableCell align={"center"}>브랜드</TableCell>
+                  <TableCell align={"center"}>제품 품목</TableCell>
+                  <TableCell align={"center"}>카테고리</TableCell>
+                  <TableCell align={"center"}>가격</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -79,11 +80,11 @@ export default function ShoppingCart() {
                 )}
                 {itemsInfo.map((data) => (
                   <TableRow key={data.id}>
-                    <TableCell component="th" scope="row">{data.name}</TableCell>
-                    <TableCell align="center">{data.brand}</TableCell>
-                    <TableCell align="center">{data.category}</TableCell>
-                    <TableCell align="center">{data.product_type}</TableCell>
-                    <TableCell align="center">${data.price}</TableCell>
+                    <TableCell component={"th"} scope={"row"}>{data.name}</TableCell>
+                    <TableCell align={"center"}>{data.brand}</TableCell>
+                    <TableCell align={"center"}>{data.category}</TableCell>
+                    <TableCell align={"center"}>{data.product_type}</TableCell>
+                    <TableCell align={"center"}>${data.price}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -94,19 +95,17 @@ export default function ShoppingCart() {
               variant={"contained"}
               className={classes.btnStyle}
               color={"secondary"}
+              onClick={() => {router.push('/')}}
             >
-              <Link href={'/'}>
-                <a>더 둘러보기</a>
-              </Link>
+              더 둘러보기
             </Button>
             <Button
               variant={"contained"}
               className={classes.btnStyle}
               color={"success"}
+              onClick={() => {router.push('/PurchaseComplete')}}
             >
-              <Link href={'/PurchaseComplete'}>
-                <a>결제하기</a>
-              </Link>
+              결제하기
             </Button>
           </div>
         </Grid>

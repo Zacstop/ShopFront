@@ -1,7 +1,7 @@
 import * as React from "react";
 import {makeStyles} from "@mui/styles";
 import {Box, Divider, Grid, Typography} from "@mui/material";
-import Link from "next/link";
+import {useRouter} from "next/router";
 import {CartItemInfo} from "../model/CartItemInfo";
 
 const styles = makeStyles(() => ({
@@ -44,6 +44,7 @@ interface Props {
 
 export default function ItemList({list}: Props) {
   const classes = styles()
+  const router = useRouter()
 
   return (
     <div>
@@ -53,15 +54,16 @@ export default function ItemList({list}: Props) {
           <Divider/>
           <Grid container columns={12}>
             {list.map((item) => (
-              <Grid item xs={3} key={item.id} className={classes.itemContainer}>
-                <Link href={`/items/${item.id}`}>
-                  <a>
-                    <img src={item.image_link} className={classes.itemImage} alt={"itemImage"}/>
-                    <strong className={classes.itemInfo}>{item.name}</strong>
-                    <p className={classes.productType}>{item.product_type}</p>
-                    <strong className={classes.priceInfo}>${item.price}</strong>
-                  </a>
-                </Link>
+              <Grid
+                item xs={3}
+                key={item.id}
+                className={classes.itemContainer}
+                onClick={() => {router.push(`/items/${item.id}`)}}
+              >
+                <img src={item.image_link} className={classes.itemImage} alt={"itemImage"}/>
+                <strong className={classes.itemInfo}>{item.name}</strong>
+                <p className={classes.productType}>{item.product_type}</p>
+                <strong className={classes.priceInfo}>${item.price}</strong>
               </Grid>
             ))}
           </Grid>

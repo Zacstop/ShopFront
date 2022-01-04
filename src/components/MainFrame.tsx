@@ -1,16 +1,18 @@
 import React, {PropsWithChildren} from "react";
 import {makeStyles} from "@mui/styles";
-import {AppBar, Badge, Box, Button, Grid, IconButton, InputBase, Toolbar, Typography} from "@mui/material";
+import {AppBar, Badge, Box, Button, Grid, IconButton, InputBase, Toolbar} from "@mui/material";
 import {AccountCircle, Menu, Search, ShoppingCart} from "@mui/icons-material";
-import Link from "next/link";
 import {useRecoilValue} from "recoil";
 import {cartItemsInfoState} from "../states/CartItemsInfo";
+import {useRouter} from "next/router";
 
-interface Props {}
+interface Props {
+}
 
 const styles = makeStyles(() => ({
   mainLogo: {
-    minWidth: 120,
+    height: 60,
+    cursor: "pointer",
   },
   search: {
     position: "relative",
@@ -30,19 +32,15 @@ const styles = makeStyles(() => ({
 
 export default function MainFrame({children}: PropsWithChildren<Props>) {
   const classes = styles()
+  const router = useRouter()
   const cartInItem = useRecoilValue(cartItemsInfoState)
 
   return (
     <AppBar position={"static"}>
       <Toolbar>
         <Grid container xs={4}>
-          <Link href={'/'}>
-            <a>
-              <Typography variant={"h6"} className={classes.mainLogo} component={"div"}>
-                Dalda Shop
-              </Typography>
-            </a>
-          </Link>
+          <img src={'/imagesSource/MainLogo.png'} className={classes.mainLogo}
+               onClick={() => {router.push('/')}}/>
         </Grid>
         <Search/>
         <Grid xs={4} container className={classes.search}>
@@ -68,12 +66,13 @@ export default function MainFrame({children}: PropsWithChildren<Props>) {
               size={"large"}
               aria-label={"shopping cart"}
               color={"inherit"}
+              onClick={() => {
+                router.push('/ShoppingCart/')
+              }}
             >
-              <Link href={'/ShoppingCart/'}>
-                <Badge badgeContent={cartInItem.length} color={"error"}>
-                  <ShoppingCart/>
-                </Badge>
-              </Link>
+              <Badge badgeContent={cartInItem.length} color={"error"}>
+                <ShoppingCart/>
+              </Badge>
             </IconButton>
           </Box>
           <Box sx={{display: {xs: "none", md: "flex"}}}>

@@ -180,7 +180,7 @@ export default function Purchase() {
                 <Grid>
                   <Typography>이름</Typography>
                   <TextField
-                    label="이름"
+                    label={"이름"}
                     variant={"outlined"}
                     className={classes.shortText}
                     value={name}
@@ -192,20 +192,20 @@ export default function Purchase() {
                 <Grid>
                   <Typography>주소</Typography>
                   <TextField
-                    label="우편번호"
+                    label={"우편번호"}
                     variant={"outlined"}
                     className={classes.shortText}
                     onChange={changeAddress}
                     error={addressValidation()}
                     required
                   />
-                  <TextField label="기본주소" variant={"outlined"} className={classes.longText}/>
-                  <TextField label="상세주소" variant={"outlined"} className={classes.longText}/>
+                  <TextField label={"기본주소"} variant={"outlined"} className={classes.longText}/>
+                  <TextField label={"상세주소"} variant={"outlined"} className={classes.longText}/>
                 </Grid>
                 <Grid>
                   <Typography>전화번호</Typography>
                   <TextField
-                    label="전화번호"
+                    label={"전화번호"}
                     variant={"outlined"}
                     className={classes.shortText}
                     onChange={changePhone}
@@ -226,38 +226,38 @@ export default function Purchase() {
                       <Table>
                         <TableHead className={classes.tableHead}>
                           <TableRow>
-                            <TableCell align="left">구매 목록</TableCell>
+                            <TableCell align={"left"}>구매 목록</TableCell>
                             <TableCell/>
                           </TableRow>
                         </TableHead>
-                        <TableBody>
-                          <TableRow key={data.id}>
-                            <TableCell component="th" scope="row">{data.name}</TableCell>
-                            <TableCell align="center">${data.price}</TableCell>
+                        <TableBody key={data.id}>
+                          <TableRow>
+                            <TableCell component={"th"} scope={"row"}>{data.name}</TableCell>
+                            <TableCell align={"center"}>${data.price}</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell component="th" scope="row">총 상품 금액</TableCell>
-                            <TableCell align="center">${data.price}</TableCell>
+                            <TableCell component={"th"} scope={"row"}>총 상품 금액</TableCell>
+                            <TableCell align={"center"}>${data.price}</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell component="th" scope="row">10% 추가 할인 이벤트</TableCell>
-                            <TableCell align="center"> - ${data.price * 10 / 100}</TableCell>
+                            <TableCell component={"th"} scope={"row"}>10% 추가 할인 이벤트</TableCell>
+                            <TableCell align={"center"}> - ${data.price * 10 / 100}</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell component="th" scope="row">배송비</TableCell>
-                            <TableCell align="center">$3</TableCell>
+                            <TableCell component={"th"} scope={"row"}>배송비</TableCell>
+                            <TableCell align={"center"}>$3</TableCell>
                           </TableRow>
                           <TableRow>
-                            <TableCell component="th" scope="row">총 결제 금액</TableCell>
-                            <TableCell align="center">${data.price - data.price * 10 / 100}</TableCell>
+                            <TableCell component={"th"} scope={"row"}>총 결제 금액</TableCell>
+                            <TableCell align={"center"}>${data.price - data.price * 10 / 100}</TableCell>
                           </TableRow>
                           <TableRow>
-                            <FormControl component="fieldset" className={classes.purchaseChose}>
-                              <FormLabel component="legend">결제 방법</FormLabel>
-                              <RadioGroup aria-label="purchaseCase" defaultValue="Card">
-                                <FormControlLabel value="Card" control={<Radio/>} label="신용 & 체크카드 결제"/>
-                                <FormControlLabel value="BankBook" control={<Radio/>} label="무통장 입금"/>
-                                <FormControlLabel value="Other" control={<Radio/>} label="간편 결제 (카카오페이, 토스)"/>
+                            <FormControl component={"fieldset"} className={classes.purchaseChose}>
+                              <FormLabel component={"legend"}>결제 방법</FormLabel>
+                              <RadioGroup aria-label={"purchaseCase"} defaultValue={"Card"}>
+                                <FormControlLabel value={"Card"} control={<Radio/>} label={"신용 & 체크카드 결제"}/>
+                                <FormControlLabel value={"BankBook"} control={<Radio/>} label={"무통장 입금"}/>
+                                <FormControlLabel value={"Other"} control={<Radio/>} label={"간편 결제 (카카오페이, 토스)"}/>
                               </RadioGroup>
                             </FormControl>
                           </TableRow>

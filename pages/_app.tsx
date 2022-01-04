@@ -9,16 +9,14 @@ import {RecoilRoot} from "recoil";
 function MyApp({Component, pageProps}: AppProps) {
   return (
     <RecoilRoot>
-      <div>
-        <Head>
-          <title>Dalda Shop</title>
-        </Head>
-        <main>
-          <MainFrame/>
-          <Component {...pageProps} />
-          <Footer/>
-        </main>
-      </div>
+      <Head>
+        <title>Dalda Shop</title>
+      </Head>
+      <main>
+        <MainFrame/>
+        <Component {...pageProps}/>
+        <Footer/>
+      </main>
     </RecoilRoot>
   )
 }
